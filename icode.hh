@@ -149,6 +149,7 @@ public:
 	Mem_Addr_Opd(Symbol_Table_Entry & se);
 	~Mem_Addr_Opd() {}
 
+	Symbol_Table_Entry & get_symbol_entry();
 	void print_ics_opd(ostream & file_buffer);
 	void print_asm_opd(ostream & file_buffer);
 

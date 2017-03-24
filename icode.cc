@@ -39,6 +39,10 @@ Mem_Addr_Opd & Mem_Addr_Opd::operator=(const Mem_Addr_Opd & rhs)
 	return *this;
 }
 
+Symbol_Table_Entry & Mem_Addr_Opd::get_symbol_entry(){
+	return *symbol_entry;	
+}
+
 void Mem_Addr_Opd::print_ics_opd(ostream & file_buffer) 
 {
 	//TODO
@@ -416,7 +420,7 @@ Control_Flow_IC_Stmt& Control_Flow_IC_Stmt::operator=(const Control_Flow_IC_Stmt
 	return*this;
 }
 
-Instruction_Descriptor & Control_Flow_IC_Stmt::get_inst_op_of_ics(){ op_desc.get_op(); }
+Instruction_Descriptor & Control_Flow_IC_Stmt::get_inst_op_of_ics(){ return op_desc; }
 
 Ics_Opd * Control_Flow_IC_Stmt::get_opd1()		 	{ return opd1; }
 void Control_Flow_IC_Stmt::set_opd1(Ics_Opd * io)	{ opd1-io; }
@@ -428,25 +432,46 @@ string Control_Flow_IC_Stmt::get_Offset()			{ return offset; }
 void Control_Flow_IC_Stmt::set_Offset(string label)	{ offset = label; }
 
 void Control_Flow_IC_Stmt::print_icode(ostream & file_buffer){
-	CHECK_INVARIANT (opd1, "Opd1 cannot be NULL for a control flow IC Stmt");
+	if(op_desc.get_op()!=j) {
+		CHECK_INVARIANT (opd1, "Opd1 cannot be NULL for a control flow IC Stmt");
+		CHECK_INVARIANT (opd2, "Opd2 cannot be NULL for a control flow IC Stmt");
+	}
 
+	Icode_Format ic_format=op_desc.get_ic_format();
 	string operation_name = op_desc.get_name();
-	file_buffer << "\t" << operation_name << ":    \t";
-	opd1->print_ics_opd(file_buffer);
-	file_buffer<<" , ";
-	opd2->print_ics_opd(file_buffer);
-	file_buffer << " : goto "<<offset<<"\n";
+	switch(ic_format) {
+	case i_op_o1_o2_st:
+		file_buffer << "\t" << operation_name << ":    \t";
+		opd1->print_ics_opd(file_buffer);
+		file_buffer<<" , ";
+		opd2->print_ics_opd(file_buffer);
+		file_buffer << " : goto "<<offset<<"\n";
+		break;
+	case i_op_st:	/* label instr */
+		file_buffer<<"\tgoto "<<offset<<"\n";
+	}
 }
 
 void Control_Flow_IC_Stmt::print_assembly(ostream & file_buffer){
-	CHECK_INVARIANT (opd1, "Opd1 cannot be NULL for a control flow IC Stmt");
 
+	if(op_desc.get_op()!=j) {
+		CHECK_INVARIANT (opd1, "Opd1 cannot be NULL for a control flow IC Stmt");
+		CHECK_INVARIANT (opd2, "Opd2 cannot be NULL for a control flow IC Stmt");
+	}
+
+	Assembly_Format asm_format=op_desc.get_assembly_format();
 	string operation_name = op_desc.get_mnemonic();
-	file_buffer << "\t" << operation_name << " ";
-	opd1->print_asm_opd(file_buffer);
-	file_buffer<<", ";
-	opd2->print_asm_opd(file_buffer);
-	file_buffer << ", "<<offset<<" \n";
+	switch(asm_format) {
+	case a_op_o1_o2_st:
+		file_buffer << "\t" << operation_name << " ";
+		opd1->print_asm_opd(file_buffer);
+		file_buffer<<", ";
+		opd2->print_asm_opd(file_buffer);
+		file_buffer << ", "<<offset<<" \n";
+		break;
+	case a_op_st:
+		file_buffer<<"\t" << operation_name <<" "<<offset<<"\n";
+	}
 
 }
 
@@ -478,27 +503,12 @@ string Label_IC_Stmt::get_offset()					{ return offset; }
 void Label_IC_Stmt::set_offset(string label)		{ offset=label; }
 
 void Label_IC_Stmt::print_icode(ostream & file_buffer){
-	Tgt_Op op = op_desc.get_op();
-	// cout<<op<<" ";
-	switch(op) {
-	case j :
-		file_buffer<<"\tgoto "<<offset<<"\n";
-		break;
-	case label :
-		file_buffer<<"\n"<<offset<<":    	\n";
-	}
+	// file_buffer<<"\tgoto "<<offset<<"\n";
+	file_buffer<<"\n"<<offset<<":    	\n";
 }
 void Label_IC_Stmt::print_assembly(ostream & file_buffer){
-	Tgt_Op op = op_desc.get_op();
-	// cout<<op<<" ";
-	switch(op) {
-	case j :
-		file_buffer<<"\tj "<<offset<<"\n";
-		break;
-	case label :
-		file_buffer<<"\n"<<offset<<":    	\n";
-	}
-
+	// file_buffer<<"\tj "<<offset<<"\n";
+	file_buffer<<"\n"<<offset<<":    	\n";
 }
 
 

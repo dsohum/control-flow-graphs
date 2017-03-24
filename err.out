@@ -1,0 +1,333 @@
+rm: cannot remove 'testcases/*.ast*': No such file or directory
+rm: cannot remove 'testcases/*.ic*': No such file or directory
+rm: cannot remove 'testcases/*.spim*': No such file or directory
+Syntax error
+sclp error: File: testcases/Fact_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/FloatRelArith.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/FloatRelArith_epic.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/FloatRelArith_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/FloatUnary_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/GcdLcmDoWhile_epic.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/GcdLcm_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/IfArith.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/IfArith_epic.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/IfArith_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/IfFloatArith_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/IfFloatRelArith_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/IfRelArith_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/IfUnary_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/LeapYear_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/my1_rupanshu.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/my3_rupanshu.c, Line: 8: Relational statement data type not compatible
+Syntax error
+sclp error: File: testcases/my3_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/OddEven_rupanshu.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/ravi_test1_epic.c, Line: 12: Arithmetic statement data type not compatible
+sclp error: File: testcases/ravi_test1_epic.c, Line: 12: Arithmetic statement data type not compatible
+sclp error: File: testcases/ravi_test6_epic.c, Line: 6: Assignment statement data type not compatible
+sclp error: File: testcases/ravi_test6_epic.c, Line: 7: Assignment statement data type not compatible
+sclp error: File: testcases/ravi_test6_epic.c, Line: 8: Arithmetic statement data type not compatible
+sclp error: File: testcases/ravi_test6_epic.c, Line: 8: Assignment statement data type not compatible
+sclp error: File: testcases/ravi_test6_epic.c, Line: 10: Arithmetic statement data type not compatible
+sclp error: File: testcases/ravi_test6_epic.c, Line: 10: Assignment statement data type not compatible
+sclp error: File: testcases/ravi_test7_epic.c, Line: 3: Variable is declared twice
+sclp error: File: testcases/ravi_test7_epic.c, Line: 4: Variable is declared twice
+sclp error: File: testcases/ravi_test7_epic.c, Line: 6: Variable has not been declared
+Syntax error
+sclp error: File: testcases/ravi_test9_epic.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/RelArith1.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/RelArith1_epic.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/RelArith1_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/RelArith2_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/RelArithBrckt_rupanshu.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/RetInFor.c, Line: 8: Variable has not been declared
+sclp error: File: testcases/RetInFor_epic.c, Line: 8: Variable has not been declared
+Syntax error
+sclp error: File: testcases/RetInFor_rupanshu.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/s1_epic.c, Line: 4: Variable is declared twice
+sclp error: File: testcases/s1_epic.c, Line: 4: Variable is declared twice
+sclp error: File: testcases/s3_epic.c, Line: 5: Variable is declared twice
+sclp error: File: testcases/s3_epic.c, Line: 5: Variable is declared twice
+sclp error: File: testcases/s3_epic.c, Line: 5: Variable is declared twice
+sclp error: File: testcases/s4_epic.c, Line: 5: Variable is declared twice
+sclp error: File: testcases/s4_epic.c, Line: 5: Variable is declared twice
+sclp error: File: testcases/s4_epic.c, Line: 5: Variable is declared twice
+sclp error: File: testcases/t10_epic.c, Line: 11: Arithmetic statement data type not compatible
+sclp error: File: testcases/t10_epic.c, Line: 11: Arithmetic statement data type not compatible
+sclp error: File: testcases/t11_epic.c, Line: 9: Arithmetic statement data type not compatible
+sclp error: File: testcases/t11_epic.c, Line: 9: Assignment statement data type not compatible
+sclp error: File: testcases/t11_epic.c, Line: 10: Relational statement data type not compatible
+sclp error: File: testcases/t11_epic.c, Line: 10: Arithmetic statement data type not compatible
+sclp error: File: testcases/t11_epic.c, Line: 10: Assignment statement data type not compatible
+sclp error: File: testcases/t11_epic.c, Line: 11: Arithmetic statement data type not compatible
+sclp error: File: testcases/t11_epic.c, Line: 12: Relational statement data type not compatible
+sclp error: File: testcases/t11_epic.c, Line: 12: Arithmetic statement data type not compatible
+sclp error: File: testcases/t11_epic.c, Line: 13: Arithmetic statement data type not compatible
+sclp error: File: testcases/t11_epic.c, Line: 13: Assignment statement data type not compatible
+sclp error: File: testcases/t12_epic.c, Line: 8: Arithmetic statement data type not compatible
+sclp error: File: testcases/t12_epic.c, Line: 8: Assignment statement data type not compatible
+sclp error: File: testcases/t12_epic.c, Line: 9: Arithmetic statement data type not compatible
+sclp error: File: testcases/t13_epic.c, Line: 8: Arithmetic statement data type not compatible
+sclp error: File: testcases/t13_epic.c, Line: 8: Arithmetic statement data type not compatible
+sclp error: File: testcases/t14_epic.c, Line: 8: Arithmetic statement data type not compatible
+sclp error: File: testcases/t14_epic.c, Line: 8: Arithmetic statement data type not compatible
+sclp error: File: testcases/t2_epic.c, Line: 6: Relational statement data type not compatible
+sclp error: File: testcases/t5_epic.c, Line: 11: Variable has not been declared
+sclp error: File: testcases/t6_epic.c, Line: 7: Arithmetic statement data type not compatible
+sclp error: File: testcases/t6_epic.c, Line: 7: Assignment statement data type not compatible
+sclp error: File: testcases/t7_epic.c, Line: 7: Arithmetic statement data type not compatible
+sclp error: File: testcases/t7_epic.c, Line: 7: Assignment statement data type not compatible
+sclp error: File: testcases/t8_epic.c, Line: 7: Arithmetic statement data type not compatible
+sclp error: File: testcases/t8_epic.c, Line: 7: Assignment statement data type not compatible
+sclp error: File: testcases/t9_epic.c, Line: 11: Arithmetic statement data type not compatible
+sclp error: File: testcases/t9_epic.c, Line: 11: Arithmetic statement data type not compatible
+Syntax error
+sclp error: File: testcases/test10_navneet.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/test12_epic.c, Line: 7: Arithmetic statement data type not compatible
+sclp error: File: testcases/test12_old.c, Line: 7: Arithmetic statement data type not compatible
+sclp error: File: testcases/test13_epic.c, Line: 10: Relational statement data type not compatible
+Syntax error
+sclp error: File: testcases/test13_navneet.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/test13_old.c, Line: 10: Relational statement data type not compatible
+sclp error: File: testcases/test14_epic.c, Line: 8: Relational statement data type not compatible
+sclp error: File: testcases/test14_old.c, Line: 8: Relational statement data type not compatible
+Syntax error
+sclp error: File: testcases/test15_navneet.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/test1.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/test20_navneet.c, Line: 14: Arithmetic statement data type not compatible
+sclp error: File: testcases/test2.c, Line: 14: Variable has not been declared
+sclp error: File: testcases/test-2_epic.c, Line: 10: Arithmetic statement data type not compatible
+sclp error: File: testcases/test-2_epic.c, Line: 10: Arithmetic statement data type not compatible
+sclp error: File: testcases/test-2_old.c, Line: 10: Arithmetic statement data type not compatible
+sclp error: File: testcases/test-2_old.c, Line: 10: Arithmetic statement data type not compatible
+sclp error: File: testcases/test2_rupanshu.c, Line: 7: Arithmetic statement data type not compatible
+sclp error: File: testcases/test2_rupanshu.c, Line: 7: Relational statement data type not compatible
+sclp error: File: testcases/test2_rupanshu.c, Line: 9: Relational statement data type not compatible
+sclp error: File: testcases/test2_rupanshu.c, Line: 15: Arithmetic statement data type not compatible
+sclp error: File: testcases/test2_rupanshu.c, Line: 15: Relational statement data type not compatible
+sclp error: File: testcases/test2_rupanshu.c, Line: 16: Assignment statement data type not compatible
+sclp error: File: testcases/test2_rupanshu.c, Line: 18: Assignment statement data type not compatible
+sclp error: File: testcases/test2_rupanshu.c, Line: 19: Relational statement data type not compatible
+Syntax error
+sclp error: File: testcases/test2_rupanshu.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/test-3_epic.c, Line: 10: Arithmetic statement data type not compatible
+sclp error: File: testcases/test-3_epic.c, Line: 10: Arithmetic statement data type not compatible
+Syntax error
+sclp error: File: testcases/test3_navneet.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/test-3_old.c, Line: 10: Arithmetic statement data type not compatible
+sclp error: File: testcases/test-3_old.c, Line: 10: Arithmetic statement data type not compatible
+Syntax error
+sclp error: File: testcases/test3_rupanshu.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/test-4_epic.c, Line: 10: Variable has not been declared
+Syntax error
+sclp error: File: testcases/test4_navneet.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/test-4_old.c, Line: 10: Variable has not been declared
+sclp error: File: testcases/test-5_epic.c, Line: 9: Arithmetic statement data type not compatible
+sclp error: File: testcases/test-5_epic.c, Line: 9: Arithmetic statement data type not compatible
+sclp error: File: testcases/test-5_epic.c, Line: 10: Arithmetic statement data type not compatible
+sclp error: File: testcases/test-5_old.c, Line: 9: Arithmetic statement data type not compatible
+sclp error: File: testcases/test-5_old.c, Line: 9: Arithmetic statement data type not compatible
+sclp error: File: testcases/test-5_old.c, Line: 10: Arithmetic statement data type not compatible
+sclp error: File: testcases/test5_rupanshu.c, Line: 6: Variable has not been declared
+sclp error: File: testcases/test6.c, Line: 5: Illegal character `@line 
+sclp error: File: testcases/test6.c, Line: 10: Illegal character `@
+Syntax error
+sclp error: File: testcases/test6_navneet.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/test7_navneet.c, Line: 5: Arithmetic statement data type not compatible
+sclp error: File: testcases/test7_navneet.c, Line: 5: Assignment statement data type not compatible
+Syntax error
+sclp error: File: testcases/test9_navneet.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/test_old.c, Line: 27: Variable has not been declared
+Syntax error
+sclp error: File: testcases/UserIfTmp.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/UserIfTmp_epic.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/UserIfTmp_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/Fact_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/FloatRelArith.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/FloatRelArith_epic.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/FloatRelArith_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/FloatUnary_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/GcdLcmDoWhile_epic.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/GcdLcm_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/IfArith.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/IfArith_epic.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/IfArith_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/IfFloatArith_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/IfFloatRelArith_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/IfRelArith_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/IfUnary_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/LeapYear_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/my1_rupanshu.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/my3_rupanshu.c, Line: 8: Relational statement data type not compatible
+Syntax error
+sclp error: File: testcases/my3_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/OddEven_rupanshu.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/ravi_test1_epic.c, Line: 12: Arithmetic statement data type not compatible
+sclp error: File: testcases/ravi_test1_epic.c, Line: 12: Arithmetic statement data type not compatible
+sclp error: File: testcases/ravi_test6_epic.c, Line: 6: Assignment statement data type not compatible
+sclp error: File: testcases/ravi_test6_epic.c, Line: 7: Assignment statement data type not compatible
+sclp error: File: testcases/ravi_test6_epic.c, Line: 8: Arithmetic statement data type not compatible
+sclp error: File: testcases/ravi_test6_epic.c, Line: 8: Assignment statement data type not compatible
+sclp error: File: testcases/ravi_test6_epic.c, Line: 10: Arithmetic statement data type not compatible
+sclp error: File: testcases/ravi_test6_epic.c, Line: 10: Assignment statement data type not compatible
+sclp error: File: testcases/ravi_test7_epic.c, Line: 3: Variable is declared twice
+sclp error: File: testcases/ravi_test7_epic.c, Line: 4: Variable is declared twice
+sclp error: File: testcases/ravi_test7_epic.c, Line: 6: Variable has not been declared
+Syntax error
+sclp error: File: testcases/ravi_test9_epic.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/RelArith1.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/RelArith1_epic.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/RelArith1_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/RelArith2_rupanshu.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/RelArithBrckt_rupanshu.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/RetInFor.c, Line: 8: Variable has not been declared
+sclp error: File: testcases/RetInFor_epic.c, Line: 8: Variable has not been declared
+Syntax error
+sclp error: File: testcases/RetInFor_rupanshu.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/s1_epic.c, Line: 4: Variable is declared twice
+sclp error: File: testcases/s1_epic.c, Line: 4: Variable is declared twice
+sclp error: File: testcases/s3_epic.c, Line: 5: Variable is declared twice
+sclp error: File: testcases/s3_epic.c, Line: 5: Variable is declared twice
+sclp error: File: testcases/s3_epic.c, Line: 5: Variable is declared twice
+sclp error: File: testcases/s4_epic.c, Line: 5: Variable is declared twice
+sclp error: File: testcases/s4_epic.c, Line: 5: Variable is declared twice
+sclp error: File: testcases/s4_epic.c, Line: 5: Variable is declared twice
+sclp error: File: testcases/t10_epic.c, Line: 11: Arithmetic statement data type not compatible
+sclp error: File: testcases/t10_epic.c, Line: 11: Arithmetic statement data type not compatible
+sclp error: File: testcases/t11_epic.c, Line: 9: Arithmetic statement data type not compatible
+sclp error: File: testcases/t11_epic.c, Line: 9: Assignment statement data type not compatible
+sclp error: File: testcases/t11_epic.c, Line: 10: Relational statement data type not compatible
+sclp error: File: testcases/t11_epic.c, Line: 10: Arithmetic statement data type not compatible
+sclp error: File: testcases/t11_epic.c, Line: 10: Assignment statement data type not compatible
+sclp error: File: testcases/t11_epic.c, Line: 11: Arithmetic statement data type not compatible
+sclp error: File: testcases/t11_epic.c, Line: 12: Relational statement data type not compatible
+sclp error: File: testcases/t11_epic.c, Line: 12: Arithmetic statement data type not compatible
+sclp error: File: testcases/t11_epic.c, Line: 13: Arithmetic statement data type not compatible
+sclp error: File: testcases/t11_epic.c, Line: 13: Assignment statement data type not compatible
+sclp error: File: testcases/t12_epic.c, Line: 8: Arithmetic statement data type not compatible
+sclp error: File: testcases/t12_epic.c, Line: 8: Assignment statement data type not compatible
+sclp error: File: testcases/t12_epic.c, Line: 9: Arithmetic statement data type not compatible
+sclp error: File: testcases/t13_epic.c, Line: 8: Arithmetic statement data type not compatible
+sclp error: File: testcases/t13_epic.c, Line: 8: Arithmetic statement data type not compatible
+sclp error: File: testcases/t14_epic.c, Line: 8: Arithmetic statement data type not compatible
+sclp error: File: testcases/t14_epic.c, Line: 8: Arithmetic statement data type not compatible
+sclp error: File: testcases/t2_epic.c, Line: 6: Relational statement data type not compatible
+sclp error: File: testcases/t5_epic.c, Line: 11: Variable has not been declared
+sclp error: File: testcases/t6_epic.c, Line: 7: Arithmetic statement data type not compatible
+sclp error: File: testcases/t6_epic.c, Line: 7: Assignment statement data type not compatible
+sclp error: File: testcases/t7_epic.c, Line: 7: Arithmetic statement data type not compatible
+sclp error: File: testcases/t7_epic.c, Line: 7: Assignment statement data type not compatible
+sclp error: File: testcases/t8_epic.c, Line: 7: Arithmetic statement data type not compatible
+sclp error: File: testcases/t8_epic.c, Line: 7: Assignment statement data type not compatible
+sclp error: File: testcases/t9_epic.c, Line: 11: Arithmetic statement data type not compatible
+sclp error: File: testcases/t9_epic.c, Line: 11: Arithmetic statement data type not compatible
+Syntax error
+sclp error: File: testcases/test10_navneet.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/test12_epic.c, Line: 7: Arithmetic statement data type not compatible
+sclp error: File: testcases/test12_old.c, Line: 7: Arithmetic statement data type not compatible
+sclp error: File: testcases/test13_epic.c, Line: 10: Relational statement data type not compatible
+Syntax error
+sclp error: File: testcases/test13_navneet.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/test13_old.c, Line: 10: Relational statement data type not compatible
+sclp error: File: testcases/test14_epic.c, Line: 8: Relational statement data type not compatible
+sclp error: File: testcases/test14_old.c, Line: 8: Relational statement data type not compatible
+Syntax error
+sclp error: File: testcases/test15_navneet.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/test1.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/test20_navneet.c, Line: 14: Arithmetic statement data type not compatible
+sclp error: File: testcases/test2.c, Line: 14: Variable has not been declared
+sclp error: File: testcases/test-2_epic.c, Line: 10: Arithmetic statement data type not compatible
+sclp error: File: testcases/test-2_epic.c, Line: 10: Arithmetic statement data type not compatible
+sclp error: File: testcases/test-2_old.c, Line: 10: Arithmetic statement data type not compatible
+sclp error: File: testcases/test-2_old.c, Line: 10: Arithmetic statement data type not compatible
+sclp error: File: testcases/test2_rupanshu.c, Line: 7: Arithmetic statement data type not compatible
+sclp error: File: testcases/test2_rupanshu.c, Line: 7: Relational statement data type not compatible
+sclp error: File: testcases/test2_rupanshu.c, Line: 9: Relational statement data type not compatible
+sclp error: File: testcases/test2_rupanshu.c, Line: 15: Arithmetic statement data type not compatible
+sclp error: File: testcases/test2_rupanshu.c, Line: 15: Relational statement data type not compatible
+sclp error: File: testcases/test2_rupanshu.c, Line: 16: Assignment statement data type not compatible
+sclp error: File: testcases/test2_rupanshu.c, Line: 18: Assignment statement data type not compatible
+sclp error: File: testcases/test2_rupanshu.c, Line: 19: Relational statement data type not compatible
+Syntax error
+sclp error: File: testcases/test2_rupanshu.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/test-3_epic.c, Line: 10: Arithmetic statement data type not compatible
+sclp error: File: testcases/test-3_epic.c, Line: 10: Arithmetic statement data type not compatible
+Syntax error
+sclp error: File: testcases/test3_navneet.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/test-3_old.c, Line: 10: Arithmetic statement data type not compatible
+sclp error: File: testcases/test-3_old.c, Line: 10: Arithmetic statement data type not compatible
+Syntax error
+sclp error: File: testcases/test3_rupanshu.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/test-4_epic.c, Line: 10: Variable has not been declared
+Syntax error
+sclp error: File: testcases/test4_navneet.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/test-4_old.c, Line: 10: Variable has not been declared
+sclp error: File: testcases/test-5_epic.c, Line: 9: Arithmetic statement data type not compatible
+sclp error: File: testcases/test-5_epic.c, Line: 9: Arithmetic statement data type not compatible
+sclp error: File: testcases/test-5_epic.c, Line: 10: Arithmetic statement data type not compatible
+sclp error: File: testcases/test-5_old.c, Line: 9: Arithmetic statement data type not compatible
+sclp error: File: testcases/test-5_old.c, Line: 9: Arithmetic statement data type not compatible
+sclp error: File: testcases/test-5_old.c, Line: 10: Arithmetic statement data type not compatible
+sclp error: File: testcases/test5_rupanshu.c, Line: 6: Variable has not been declared
+sclp error: File: testcases/test6.c, Line: 5: Illegal character `@line 
+sclp error: File: testcases/test6.c, Line: 10: Illegal character `@
+Syntax error
+sclp error: File: testcases/test6_navneet.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/test7_navneet.c, Line: 5: Arithmetic statement data type not compatible
+sclp error: File: testcases/test7_navneet.c, Line: 5: Assignment statement data type not compatible
+Syntax error
+sclp error: File: testcases/test9_navneet.c, Line: -1: Cannot parse the input program
+sclp error: File: testcases/test_old.c, Line: 27: Variable has not been declared
+Syntax error
+sclp error: File: testcases/UserIfTmp.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/UserIfTmp_epic.c, Line: -1: Cannot parse the input program
+Syntax error
+sclp error: File: testcases/UserIfTmp_rupanshu.c, Line: -1: Cannot parse the input program

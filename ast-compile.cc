@@ -225,7 +225,7 @@ Code_For_Ast & Selection_Statement_Ast::compile()
 	
 	Label_IC_Stmt* else_label_stmt = new Label_IC_Stmt( label, NULL , string("label")+to_string(else_label));			//else label
 	Label_IC_Stmt* end_label_stmt = new Label_IC_Stmt( label, NULL , string("label")+to_string(end_label));				//end label	
-	Label_IC_Stmt* goto_stmt = new Label_IC_Stmt( j, NULL , string("label")+to_string(end_label));						//goto end-label(for then)
+	Control_Flow_IC_Stmt* goto_stmt = new Control_Flow_IC_Stmt( j, NULL, NULL, string("label")+to_string(end_label));	//goto end-label(for then)
 	
 	//put together statements in a list in order
 	list<Icode_Stmt*> ic_list;
@@ -269,9 +269,9 @@ Code_For_Ast & Iteration_Statement_Ast::compile()
 	//make all the labels and goto statements
 	Label_IC_Stmt* start_label_stmt = new Label_IC_Stmt( label, NULL , string("label")+to_string(start_label));	//loop body start label
 	Label_IC_Stmt* end_label_stmt = new Label_IC_Stmt( label, NULL , string("label")+to_string(end_label));		//loop body end label
-	Label_IC_Stmt* begin_goto_stmt;																				//goto statement for while
+	Control_Flow_IC_Stmt* begin_goto_stmt;																		//goto statement for while
 	if(!is_do_form)
-		begin_goto_stmt = new Label_IC_Stmt( j, NULL , string("label")+to_string(end_label));					//goto loop-body end to check condition first
+		begin_goto_stmt = new Control_Flow_IC_Stmt( j, NULL ,NULL, string("label")+to_string(end_label));		//goto loop-body end to check condition first
 	
 	//get all the statements in a list in order
 	list<Icode_Stmt*> ic_list;
@@ -387,7 +387,7 @@ Code_For_Ast & Conditional_Operator_Ast::compile()
 
 	Label_IC_Stmt* else_label_stmt = new Label_IC_Stmt( label, NULL , string("label")+to_string(else_label));			//else label
 	Label_IC_Stmt* end_label_stmt = new Label_IC_Stmt( label, NULL , string("label")+to_string(end_label));				//end label	
-	Label_IC_Stmt* goto_stmt = new Label_IC_Stmt( j, NULL , string("label")+to_string(end_label));						//goto end-label(for then)
+	Control_Flow_IC_Stmt* goto_stmt = new Control_Flow_IC_Stmt( j, NULL, NULL, string("label")+to_string(end_label));	//goto end-label(for then)
 	
 	//put together statements in a list in order
 	list<Icode_Stmt*> ic_list;
