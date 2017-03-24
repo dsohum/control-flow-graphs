@@ -1,3 +1,26 @@
+Instructions:
+	run make to create the executable(do the relevan changes in make file for different versions of Ubuntu)
+
+Idead:
+	Make a CGF in Control_Flow_Graph class consisting of multiple Basic_Block objects connected together based on code structure.
+	Kill and Gen sets are computed for each block in the CFG.
+	In and Out sets are generated using the Iterative Fixed Point method discussed in class with post-order traversal.
+	Liveness analysis is done for each basic block by checking liveness of variable for each assignment statement. Liveness at a point is propagated up from the bottom by starting with out set for that block and modifying it at each step as we go up(upward traversal). We repeat the above computations untill convergence for dead code elimination.
+	Out-set of end block is initialized with all global symbol table entries.
+
+	We have created cfg.cc and cfg.hh for the above computations.
+	We have modified main.cc to do the dead code elimination and output the dce file.
+	We have modified program.hh and procedure.hh for optimize() funtion. program.cc implements these functions.
+	We have modified symbol-table.hh to accesss list of global-symbol-table entries. This function is also implemented in program.cc
+	We have modified ast.hh to access sa_icode_list of Sequence_Ast.
+
+________________________________________________________________________________________________________________________________
+
+BONUS:
+We do strong liveness analysis for dead code elimination handling global variables by putting them in out set of the end-block(as BL of slides)
+
+
+
 RELEVANT GRAMMAR RULES USED:
 ################################
 

@@ -39,7 +39,7 @@ public:
 
 	// compile
 	void compile();
-	void optimize();
+	void optimize(bool print_icode,string file_name);
 	void print_icode(ostream & file_buffer);
 	void print_assembly(ostream & file_buffer);
 

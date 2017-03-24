@@ -63,6 +63,7 @@ public:
 
 	bool variable_in_symbol_list_check(string variable);
 	Symbol_Table_Entry & get_symbol_table_entry(string variable_name);
+	list<Symbol_Table_Entry*>& get_variable_table_list();
 	void global_list_in_proc_check();
 
 	// void create(Local_Environment & local_global_variables_table);

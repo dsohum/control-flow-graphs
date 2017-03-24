@@ -48,7 +48,10 @@ int main(int argc, char * argv[])
 		{
 		#ifdef COMPILE
 			program_object.compile();
-			program_object.optimize();	
+			bool print_icode=false;
+			// if(error_status()==false && command_options.is_code_selected())
+				// print_icode=true;
+			program_object.optimize(print_icode,input_file_name);
 			if (command_options.is_show_symtab_selected())
 				program_object.print_sym();
 		#else

@@ -24,6 +24,7 @@ public:
 
 	void set_procedure(Procedure * proc, int line);
 	void set_global_table(Symbol_Table & new_global_table);
+	Symbol_Table& get_global_symbol_table();
 
 	Symbol_Table_Entry & get_symbol_table_entry(string variable);
 
@@ -36,7 +37,7 @@ public:
 
 	// compile
 	void compile();
-	void optimize();
+	void optimize(bool,string);
 	void print_assembly();
 };
 

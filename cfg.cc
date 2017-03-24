@@ -28,18 +28,12 @@ int Basic_Block::block_counter=0;
 lli get_operand_id(Ics_Opd* p){
 	lli id=0;
 	if(typeid(*p)==typeid(Register_Addr_Opd)) {
-		// cout<<"here "<<id<<endl;
-		// cout<<p<<endl;
-		// cout<<((Register_Addr_Opd*)p)->get_reg()<<endl;
 		if(((Register_Addr_Opd*)p)->get_reg()!=0  && typeid(*((Register_Addr_Opd*)p)->get_reg())==typeid(Register_Descriptor))
 			id=(((((Register_Addr_Opd*)p)->get_reg())->get_register())<<2)+1;		//id=...01
-		// cout<<"here "<<id<<endl;
 	} else if(typeid(*p)==typeid(Mem_Addr_Opd)) {
-		// cout<<"here instead!\n";
 		id=(lli)&((Mem_Addr_Opd*)p)->get_symbol_entry();				//id=...00 word aligned structures/classes
-		// cout<<"here instead!\n";
 	} 
-	//id=0 for constants
+	//id=0 for constants and null rhs-opd-register(in case of Uminus)
 	
 	return id;
 }
@@ -85,10 +79,9 @@ list<Basic_Block*>& Basic_Block::get_child_blocks(){
 	return child_blocks; 
 }
 
-bool Basic_Block::update_next_ic_block(Basic_Block* new_block) {
-	if(child_blocks.size()<=1) return false;			// for j stmt
+void Basic_Block::update_next_ic_block(Basic_Block* new_block) {
+	if(child_blocks.size()<=1) return;			// for j stmt
 	child_blocks.front()=new_block;
-	return true;
 }
 
 void Basic_Block::set_seq_next_block(Basic_Block* next){
@@ -98,12 +91,18 @@ Basic_Block* Basic_Block::get_seq_next_block(){
 	return seq_next_block;
 }
 
+
+/*
+ Iterate over the block from top to down
+ for assignment stmt, conditional stmt and compute ops, add all the opds not in current-kill set(containing vars/regs with l-value access)
+ to the gen set.
+(kill==l_value)
+*/
 void Basic_Block::compute_kill_and_gen() {
 	set<lli> &l_values=kill;
 	l_values.insert(0);					//0 for constants, which are l_values only
 	lli opd1,opd2;
 	for(auto it:sa_block_icode_list){
-		// cout<<"...hohoho....\n";	
 		if(typeid(*it)==typeid(Move_IC_Stmt)){
 			// cout<<"hahaha...\n";
 				opd1= get_operand_id( ((Move_IC_Stmt*)it)->get_opd1() );	
@@ -138,17 +137,34 @@ void Basic_Block::compute_kill_and_gen() {
 		// cout<<"done\n";
 }
 
+/*
+compute in out sets for this block
+called in Control_Flow_Graph::eliminate_dead_code for all the nodes in a post-order-traversal over the cfg
+
+out=U(in-of-successors)
+in=(out-kill) U gen 			//out-kill=out_kill
+if in or out get updated return true to indicate this change =>!saturation
+*/
 bool Basic_Block::compute_in_and_out(){
 	bool changed=false;
-	cout<<"Block "<<block_id<<' ';
+	// cout<<"Block "<<block_id<<"....\n";
 	set<lli> out_next;
+	if(child_blocks.size()==0){
+		list<Symbol_Table_Entry*>& gst = program_object.get_global_symbol_table().get_variable_table_list();
+		set<lli>::iterator it2=out_next.begin();		
+		for(auto v:gst){
+			it2=out_next.insert(it2,(lli)v);			//value of get_operand_id(opd(v))
+		}
+	}
 	for(auto c_node:child_blocks){
 		//union with in[c_node]
 		set<lli>::iterator it2=out_next.begin();		
+		// cout<<c_node->get_block_id()<<" ";
 		for(auto v:c_node->get_in_set()){
 			it2=out_next.insert(it2,v);
-			print_by_id(v);
+			// print_by_id(v);
 		}
+		// cout<<"\n";
 	}
 	changed=!(out_next==out);
 	if(changed){
@@ -197,6 +213,15 @@ bool Basic_Block::compute_in_and_out(){
 	return changed;
 }
 
+
+/*
+Called over all nodes in Control_Flow_Graph::eliminate_dead_code()
+begin with out and do a bottom up traversal in current block
+on encountering lvalue check if the lvalue-variable is live if not this assignment is dead code
+remove this lvalue from the current-live(initially to out and maintained as out below) set and add rvalue occurances to this current-live set
+(Finally, though later, we'll use the list of icode generated at the end of this function to generate final icode stmt list :) )
+return true if somthing was deleted => !saturation 
+*/
 bool Basic_Block::eliminate_dead_code(){
 	bool changed=false;
 	lli opd1, opd2,result;
@@ -239,39 +264,55 @@ bool Basic_Block::eliminate_dead_code(){
 
 /*************************** Class Control_Flow_Graph *****************************/
 
+/*
+Construct a CFG of the code.
+Break points are jump/goto or branch stmt and label stmts
+
+we maintain last_block so that if there is a label stmt current block becomes the already created label-block
+hence we need to change the successor of the last_block. This only occurs for a branch stmt(not jump though). also we need to change the
+successor node in the sequential-code-order-ignoring-control-flow sequence (Needed to get the listof icode back from ths cfg's blocks icode-list).
+
+*/
 Control_Flow_Graph::Control_Flow_Graph(list<Icode_Stmt*>&sa_icode_list){
 	Basic_Block::block_counter=0;
 	root=new Basic_Block;
 	root->set_seq_next_block(NULL);
 	Basic_Block* last_block=NULL, *current_block=root;
 	current_block->set_block_id(Basic_Block::block_counter++);
-	bool is_empty=false;
+	current_block->set_seq_next_block(NULL);
+	bool is_empty=true;
 	for(auto it:sa_icode_list) {
 		if(typeid(*it)==typeid(Control_Flow_IC_Stmt)) {
 				current_block->push_back(it);
-				int label_no = ((Control_Flow_IC_Stmt*)it)->get_Offset().back()-'0';
-				if(label_block_table.find(label_no)==label_block_table.end()){
+				int label_no = atoi(((Control_Flow_IC_Stmt*)it)->get_Offset().substr(5).c_str());		//label#
+				if(label_block_table.find(label_no)==label_block_table.end()){							//create a block for this label
 					Basic_Block* new_block=new Basic_Block;
-					new_block->set_block_id(Basic_Block::block_counter++);
+					new_block->set_block_id(Basic_Block::block_counter++);			
+					// cout<<"made label "<<Basic_Block::block_counter-1<<" "<<label_no<<endl;
 					new_block->set_seq_next_block(NULL);
 					label_block_table.insert(pair<int,Basic_Block*>(label_no,new_block));
 				}
-				Basic_Block* new_block=new Basic_Block;					// create new block
+				Basic_Block* new_block=new Basic_Block;					// create new block for next set of statements
 				new_block->set_block_id(Basic_Block::block_counter++);
+				// cout<<"made label "<<Basic_Block::block_counter-1<<" "<<label_no<<endl;
 				new_block->set_seq_next_block(NULL);
 				if(((Control_Flow_IC_Stmt*)it)->get_inst_op_of_ics().get_op()!=j)
-					current_block->add_child(new_block);				// set next sequential block as child pointer for bne/beq(not j)
+					current_block->add_child(new_block);				// set next sequential block as child for bne/beq(not j)
 				current_block->add_child(label_block_table[label_no]);	// set label block as other child pointer 
 				current_block->set_seq_next_block(new_block);
 				last_block=current_block;								// current block becomes last block
 				current_block=new_block;								// set current block as new block
 				is_empty=true;											// current block is empty
 		} else if(typeid(*it)==typeid(Label_IC_Stmt)) {
+				if(is_empty && last_block){
+					Basic_Block::block_counter--;	// last new block to be deleted update the label_counter now	
+				}
 				Basic_Block* new_block;
 				int label_no = atoi(((Label_IC_Stmt*)it)->get_offset().substr(5).c_str());		//label#
-				if(label_block_table.find(label_no)==label_block_table.end()){
-					new_block = new Basic_Block;											// make new block for label
+				if(label_block_table.find(label_no)==label_block_table.end()){					// make new block for label	
+					new_block = new Basic_Block;											
 					new_block->set_block_id(Basic_Block::block_counter++);
+					// cout<<"made label "<<Basic_Block::block_counter-1<<" "<<label_no<<endl;
 					new_block->set_seq_next_block(NULL);
 					label_block_table.insert(pair<int,Basic_Block*>(label_no,new_block));
 				} else {
@@ -279,21 +320,28 @@ Control_Flow_Graph::Control_Flow_Graph(list<Icode_Stmt*>&sa_icode_list){
 				}
 
 				new_block->push_back(it);
-				if(is_empty){
-					last_block->update_next_ic_block(new_block);  // update parents child to correct label block,
-					last_block->set_seq_next_block(new_block);
-					delete current_block;
-					Basic_Block::block_counter--;	// last new block was deleted update the label_counter
+				if(is_empty){										  // don't want a basic block to be empty(although no harm in keeping it to be such :P)	
+					if(last_block){									  // if there exist last block	
+						last_block->update_next_ic_block(new_block);  // update parents child to correct label block
+						last_block->set_seq_next_block(new_block);		
+						delete current_block;
+						// cout<<"delete label "<<Basic_Block::block_counter-1<<" "<<label_no<<endl;
+						// it->print_icode(cout);
+					} else if(current_block==root) {	//root was empty
+						// cout<<"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+						delete root;
+						root=new_block;
+					}
 				} else {
-					current_block->add_child(new_block);
+					current_block->add_child(new_block);				//if last block is not empty and hence not deletedset successors
 					current_block->set_seq_next_block(new_block);
 				}
 				// cout<<"next for label: "<<new_block->get_seq_next_block()<<endl;
 				new_block->set_seq_next_block(NULL);
-				last_block=NULL;
-				is_empty=false;
+				last_block=NULL;						// don't need last block, current block is non empty won't be deleted
+				is_empty=false;							// current block has label stmt => !empty
 				current_block = new_block;
-		} else {
+		} else {										//compute or move statements
 				current_block->push_back(it);
 				last_block=NULL;
 				is_empty=false;
@@ -303,6 +351,20 @@ Control_Flow_Graph::Control_Flow_Graph(list<Icode_Stmt*>&sa_icode_list){
 	// print(false,false);
 }
 
+/*
+Print the cfg in this format
+	Block id 
+	Child Blocks id id2 id3...
+	--first-stmt-of-block--
+	...
+	--last-stmt-of-block--
+	kill-gen:
+	--kill-set-with-var-names--
+	--gen-set-with-var-names--
+	in-out:
+	--in-set-with-var-names--
+	--out-set-with-var-names--
+*/
 void Control_Flow_Graph::print(bool killgen, bool inout){
 	//printinf the cfg
 	vector<bool> seen(Basic_Block::block_counter,false);
@@ -346,6 +408,9 @@ void Control_Flow_Graph::print(bool killgen, bool inout){
 	}
 }
 
+/*
+Simple post order traversal for one iteration of the fixed point method
+*/
 bool post_order_traversal(Basic_Block* node,vector<bool>&seen){
 	bool changed=false;
 	//do dfs over the cfg and update the in, out sets until convergence
@@ -359,6 +424,11 @@ bool post_order_traversal(Basic_Block* node,vector<bool>&seen){
 	return changed;
 }
 
+/*
+1. compute kill gen sets
+2. compute in out sets using fixed point method
+3. do dead code elimination based on above sets on all the blocks locally
+*/
 bool Control_Flow_Graph::eliminate_dead_code(){
 	//do dfs over the cfg and compute kill gen sets for all blocks	
 	Basic_Block* node=root;
@@ -367,7 +437,11 @@ bool Control_Flow_Graph::eliminate_dead_code(){
 	while(node!=NULL){
 		// cout<<"starting...\n";
 		node->compute_kill_and_gen();
-		// cout<<"block "<<node->get_block_id()<<endl;
+		// cout<<"block "<<node->get_block_id()<<" "<<endl;
+		// if(node->get_icode_list().size()==0)
+		// 	cout<<"error at "<<node->get_block_id();
+		// else	
+		// 	node->get_icode_list().front()->print_icode(cout);
 		node=node->get_seq_next_block();
 		// cout<<"ending...\n";
 	}
@@ -376,6 +450,7 @@ bool Control_Flow_Graph::eliminate_dead_code(){
 	bool changed=false;
 	vector<bool> seen(Basic_Block::block_counter,false);
 	do {
+		for(int i=0;i<Basic_Block::block_counter;i++)  seen[i]=false;
 		changed=post_order_traversal(root,seen);
 	} while(changed);
 	// print(true,true);
@@ -394,6 +469,10 @@ bool Control_Flow_Graph::eliminate_dead_code(){
 	return changed;
 }
 
+/*
+construct the icode list by patching the icode stmts of the basic block after dead code elimination 
+in the in the order of the original program(use seq_next_block)
+*/
 void Control_Flow_Graph::make_icode_list(list<Icode_Stmt*>&sa_icode_list){
 	sa_icode_list.clear();
 	Basic_Block* node=root;

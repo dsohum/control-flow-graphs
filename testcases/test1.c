@@ -1,9 +1,19 @@
+int d;
 void main(); main ()
 {
   float b;	
-  int a;
-  a=a + 6;
-  
+  int a,z;
+  // a=a + 6;
+  a=1;
+  while(z<a){ z=1;}
+  a=5;
+  a=6;
+  a=7;
+  z=3;
+  z=2;
+  z=0;
+  z=1;
+  while(z<a){ z=1;}
   if(a>1&&a>2){
     a=3;
    	if(a>4&&a>5){
@@ -14,6 +24,7 @@ void main(); main ()
          a=11;	  
   	   } else {
       a=12;	  
+      }
     }
   } else {
     a=13;	  
@@ -29,7 +40,8 @@ void main(); main ()
    	a=a+18;
   }while(b<19.0);
   b=20.1+21.2;
-  if(!(a==22) && a<23 || a>24){
+  d=1;
+  while(!(a==22) && a<23 || a>24){
   	a=-a-a--a;
   }
 }

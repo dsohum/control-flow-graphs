@@ -26,7 +26,7 @@ class Basic_Block {
     void set_seq_next_block(Basic_Block*);
     Basic_Block* get_seq_next_block();
   	void add_child(Basic_Block*);
-  	bool update_next_ic_block(Basic_Block*);
+  	void update_next_ic_block(Basic_Block*);
   	bool compute_in_and_out();
   	void compute_kill_and_gen();
     bool eliminate_dead_code();
